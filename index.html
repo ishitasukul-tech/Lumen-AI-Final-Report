@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ishita Sukul | Creative Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+:root {
+  --pink-100: #ffe6ef;
+  --pink-200: #ffd3e4;
+  --yellow-100: #fff8d7;
+  --yellow-200: #fff1b5;
+  --cream: #fffdf7;
+  --text: #5a4252;
+  --accent: #ee6b95;
+  --accent-soft: #f7a7bf;
+  --shadow: 0 12px 35px rgba(175, 107, 135, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Outfit", sans-serif;
+  color: var(--text);
+  background: linear-gradient(140deg, var(--pink-100) 0%, var(--cream) 45%, var(--yellow-100) 100%);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.floating-hearts span {
+  position: absolute;
+  color: rgba(238, 107, 149, 0.42);
+  font-size: clamp(1rem, 2vw, 1.6rem);
+  animation: heartFloat 9s linear infinite;
+}
+
+.floating-hearts span:nth-child(1) {
+  left: 8%;
+  top: 18%;
+}
+
+.floating-hearts span:nth-child(2) {
+  left: 85%;
+  top: 22%;
+  animation-delay: 1.2s;
+}
+
+.floating-hearts span:nth-child(3) {
+  left: 16%;
+  top: 68%;
+  animation-delay: 2.4s;
+}
+
+.floating-hearts span:nth-child(4) {
+  left: 72%;
+  top: 78%;
+  animation-delay: 3.6s;
+}
+
+.floating-hearts span:nth-child(5) {
+  left: 46%;
+  top: 10%;
+  animation-delay: 4.6s;
+}
+
+.page-glow {
+  position: fixed;
+  border-radius: 999px;
+  filter: blur(0.5px);
+  z-index: -1;
+  animation: float 10s ease-in-out infinite;
+}
+
+.page-glow-1 {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(255, 194, 217, 0.7), transparent 70%);
+  top: -80px;
+  left: -80px;
+}
+
+.page-glow-2 {
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(255, 236, 153, 0.75), transparent 72%);
+  top: 30%;
+  right: -90px;
+  animation-delay: 1.4s;
+}
+
+.page-glow-3 {
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(255, 214, 232, 0.8), transparent 74%);
+  bottom: -70px;
+  left: 45%;
+  animation-delay: 2s;
+}
+
+.hero {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 70px 24px 40px;
+  text-align: center;
+  animation: riseIn 0.8s ease-out;
+}
+
+.pill {
+  display: inline-block;
+  margin: 0;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+h1 {
+  margin: 16px 0 10px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  color: #7a3f57;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 500;
+}
+
+.description {
+  max-width: 700px;
+  margin: 12px auto 24px;
+  line-height: 1.6;
+}
+
+.hero-links {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-links a {
+  text-decoration: none;
+  color: #7a3f57;
+  background: #ffffffb5;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.hero-links a:hover {
+  transform: translateY(-2px);
+  background: #ffffff;
+}
+
+main {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+
+.section {
+  margin-top: 40px;
+  animation: riseIn 0.9s ease-out;
+}
+
+h2 {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  color: #80445d;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+}
+
+.section-intro {
+  margin: 10px 0 22px;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+}
+
+.card,
+.highlight-card,
+.instagram-box {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.card h3,
+.highlight-card h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.card p,
+.highlight-card p,
+.instagram-box p {
+  margin-top: 0;
+  line-height: 1.5;
+}
+
+.card a,
+.highlight-card a,
+.instagram-box a {
+  color: #8b345a;
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+
+.card {
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px) rotate(-0.6deg);
+  box-shadow: 0 16px 35px rgba(175, 107, 135, 0.22);
+}
+
+.highlight-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(255, 251, 222, 0.72));
+}
+
+.instagram-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.instagram-box a {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 14px;
+  text-decoration: none;
+  background: var(--pink-200);
+}
+
+footer {
+  text-align: center;
+  padding: 24px;
+  color: #7f6272;
+  font-size: 0.95rem;
+}
+
+.headshot-wrap {
+  width: 170px;
+  height: 170px;
+  margin: 20px auto 10px;
+  border-radius: 50%;
+  padding: 6px;
+  background: linear-gradient(135deg, #ffd3e4, #fff1b5);
+  box-shadow: 0 10px 30px rgba(175, 107, 135, 0.28);
+}
+
+.headshot {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  border: 3px solid #fff9f2;
+  display: block;
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(12px);
+  }
+}
+
+@keyframes heartFloat {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-12px) scale(1.12);
+    opacity: 0.55;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.3;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding-top: 54px;
+  }
+
+  .instagram-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .headshot-wrap {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+</style>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-glow page-glow-1"></div>
+    <div class="page-glow page-glow-2"></div>
+    <div class="page-glow page-glow-3"></div>
+    <div class="floating-hearts" aria-hidden="true">
+      <span>❤</span>
+      <span>❤</span>
+      <span>❤</span>
+      <span>❤</span>
+      <span>❤</span>
+    </div>
+
+    <header class="hero">
+      <p class="pill">Creative Portfolio</p>
+      <div class="headshot-wrap">
+        <img
+          src="headshot.jpg"
+          alt="Professional headshot of Ishita Sukul"
+          class="headshot"
+        />
+      </div>
+      <h1>Ishita Sukul</h1>
+      <p class="subtitle">
+        2nd-year undergraduate student at Georgia Tech, majoring in Biology
+      </p>
+      <p class="description">
+        I create paintings, visual design projects, and video edits with a soft
+        but expressive style.
+      </p>
+      <div class="hero-links">
+        <a href="#paintings">Paintings</a>
+        <a href="#design">Design Work</a>
+        <a href="#video">Video Editing</a>
+        <a href="https://3bfac7fbb89299.lhr.life" target="_blank" rel="noopener noreferrer"
+          >Pastel Portfolio</a
+        >
+      </div>
+    </header>
+
+    <main>
+      <section id="paintings" class="section">
+        <h2>Featured Paintings</h2>
+        <p class="section-intro">
+          A collection of selected pieces published in student art showcases.
+        </p>
+        <div class="grid paintings-grid">
+          <article class="card">
+            <h3>Painting Feature 1</h3>
+            <p>Published on The Pulse.</p>
+            <a href="https://thepulsejchs.com/art-8-1" target="_blank" rel="noopener noreferrer"
+              >View Artwork</a
+            >
+          </article>
+
+          <article class="card">
+            <h3>Georgia Tech Erato Edition</h3>
+            <p>Featured in the 2024-2025 edition.</p>
+            <a
+              href="https://erato.gtorg.gatech.edu/2024-2025-edition/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >View Feature</a
+            >
+          </article>
+
+          <article class="card">
+            <h3>Painting Feature 2</h3>
+            <p>Published on The Pulse.</p>
+            <a
+              href="https://thepulsejchs.com/art-10-3"
+              target="_blank"
+              rel="noopener noreferrer"
+              >View Artwork</a
+            >
+          </article>
+
+          <article class="card">
+            <h3>Painting Feature 3</h3>
+            <p>Published on The Pulse.</p>
+            <a
+              href="https://thepulsejchs.com/art-10-1"
+              target="_blank"
+              rel="noopener noreferrer"
+              >View Artwork</a
+            >
+          </article>
+        </div>
+      </section>
+
+      <section id="design" class="section">
+        <h2>Design Projects</h2>
+        <p class="section-intro">
+          Impact-driven projects focused on accessibility, opportunities, and
+          clear communication.
+        </p>
+        <div class="grid">
+          <div class="highlight-card">
+            <h3>Equipedia (Kode With Klossy, Summer 2025)</h3>
+            <p>
+              Personal web development project that connects students to
+              opportunities, programs, and scholarships in STEM, arts, social
+              service, and more. Designed to be user-friendly and accessible to
+              the public.
+            </p>
+            <a
+              href="https://y37djs-1234.csb.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Visit Equipedia</a
+            >
+          </div>
+
+          <div class="highlight-card">
+            <h3>PHR Brochure</h3>
+            <p>
+              Human trafficking awareness brochure for PHR (Physicians for Human
+              Rights), designed for clarity, urgency, and accessibility.
+            </p>
+            <a
+              href="https://media.licdn.com/dms/image/v2/D4E2DAQGwVhC8uqbaQw/profile-treasury-document-images_1920/B4EZh75E4LHoA0-/1/1754425217830?e=1773878400&v=beta&t=a-iL3NDTy4dl2ySrAlkJyozj1fV5F163IexvojjdEKI"
+              target="_blank"
+              rel="noopener noreferrer"
+              >View Brochure</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section id="video" class="section">
+        <h2>Video Editing</h2>
+        <p class="section-intro">
+          Behind-the-scenes edits, reels, and visual storytelling for social
+          media.
+        </p>
+        <div class="instagram-box">
+          <p>See all my video editing work on Instagram:</p>
+          <a
+            href="https://instagram.com/littleguyofficial"
+            target="_blank"
+            rel="noopener noreferrer"
+            >@littleguyofficial</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Made with pastel tones and creative energy by Ishita Sukul.</p>
+    </footer>
+  </body>
+</html>
